@@ -1,0 +1,95 @@
+---
+title: "admission"
+author: "Dagim"
+date: "2024-11-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Admission data set
+# The head funciton returns the first 6 rows but we can cuztumize it as we want for eg if we want the first 2 rows we can use -- head(adm, 2) ---
+```{r}
+adm = read.csv("admission.csv")
+adm
+
+
+```
+
+# The tail function returns the last 6 rows
+The tail function return the last 6 rows but we can cuztumize it to tail(adm, 2) if we want the last 2 rows
+```{r}
+tail(adm, 2)
+```
+#str(data) Displays the structure of an object, including its type and the first few elements.
+```{r}
+str(adm)
+```
+
+#summary() : provides summary statistics of each column in the dataset like mean median quartiles and more.
+```{r}
+summary(adm)
+```
+#dim(): Retruns the dimentions of data (rows and colomns of data)
+(
+```{r}
+dim(adm)
+```
+
+#calculating the mean of one col in the data set
+
+```{r}
+mean(adm$apt)
+```
+
+#calculating the variance and standard deviation of a col
+
+```{r}
+vari <- var(adm$apt)
+c("variance: ", vari)
+stand <- sd(adm$apt)
+c("standard deviation: ", stand)
+```
+### using vector addition if the Grater vector is a multiple of the shorter object then R will copy the rest of the empty part and out put if not it will throw a warning.
+```{r}
+u = c(9,3,4)
+h = c(4,5,8,6,7,1)
+print(u > h)
+```
+### for loops in r
+```{r}
+x <- rnorm(5)
+for(i in 1:5){
+  print(x[i])
+}
+```
+### what is the difference between vectorized approach and non vectorized one in R programming to add to random numbers 
+
+```{r}
+n = 10
+o <- rnorm(n)
+u <- rnorm(n)
+# the vectorized will take less time because it does have to translate everything to c programming R is basically a wrapper of c program
+c <- o * u
+print(c)
+
+#unlike other programming laguages this approach will take longer in R
+d <-rep(NA, n)
+
+for(i in 1:n){
+  d[i] <- o[i] * u[i] 
+
+}
+
+d
+
+```
+
+### importing text data 
+
+```{r}
+co <- read.table("cola.txt")
+co
